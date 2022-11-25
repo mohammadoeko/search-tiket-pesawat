@@ -5,10 +5,14 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.tes.soaltiga.appium.pages.SearchFlight;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
+import io.cucumber.java.BeforeStep;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -18,11 +22,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class TestSearchFlight {
-
         private static AndroidDriver<MobileElement> driver;
-        private SearchFlight searchFlight;
+        private SearchFlight searchFlight = new SearchFlight(driver);
 
-        @BeforeClass
+        @Before
         public void setUp() throws MalformedURLException {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("deviceName", "M2010J19CG");
@@ -37,18 +40,12 @@ public class TestSearchFlight {
         }
 
 
-        @BeforeMethod
-        public void pageObject() {
-            searchFlight = new SearchFlight(driver);
-        }
-
-
-        @Test
-        public void testSearchPenerbangan() {
-            searchFlight.searchPenerbangan();
-            System.out.println("Search Penerbangan");
-            Assert.assertEquals(searchFlight.getTxtResultPenerbangan(), "Surabaya   Banyuwangi");
-        }
+//        @Test
+//        public void testSearchPenerbangan() {
+//            searchFlight.searchPenerbangan();
+//            System.out.println("Search Penerbangan");
+//            Assert.assertEquals(searchFlight.getTxtResultPenerbangan(), "Surabaya   Banyuwangi");
+//        }
 
 //        @AfterClass
 //        public void closeApp() {
@@ -65,7 +62,6 @@ public class TestSearchFlight {
 
     @And("TCC.001.SearchTiketPesawat.User memasukkan penerbangan dari")
     public void tcc_001_search_tiket_pesawat_user_memasukkan_penerbangan_dari() {
-//        Hooks.delay(2);
         searchFlight.penerbanganDari("Surabaya");
         extentTest.log(LogStatus.PASS,"memasukkan penerbangan dari");
     }
@@ -114,3 +110,8 @@ public class TestSearchFlight {
         extentTest.log(LogStatus.PASS,"memilih kelas penerbangan");
     }
 }
+
+
+//    public void pageObject() {
+//        searchFlight = new SearchFlight(driver);
+//    }

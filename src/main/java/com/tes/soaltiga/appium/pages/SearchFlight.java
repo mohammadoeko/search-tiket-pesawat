@@ -149,6 +149,7 @@ public class SearchFlight {
     }
 
     public void penerbanganDari(String kota) {
+        delay(2);
         clickDari.click();
         cariKota.sendKeys(kota);
         clickResultCariKota.click();
@@ -176,6 +177,7 @@ public class SearchFlight {
     }
 
     public void kelasPenerbangan() {
+        delay(2);
         kelasPenerbangan.click();
         radioBtnEconomy.click();
         btnSelesai.click();
@@ -186,10 +188,11 @@ public class SearchFlight {
     }
 
     public String getTxtResultPenerbangan() {
+        delay(2);
         return txtResultPenerbangan.getText();
     }
 
-    public static void delay(int detik) {
+    public void delay(int detik) {
         try {
             Thread.sleep(1000*detik);
         } catch (InterruptedException e) {
