@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class SearchFlight {
-    private AndroidDriver driver;
+    public AndroidDriver<MobileElement> driver;
 
     public SearchFlight(AndroidDriver<MobileElement> driver) {
         this.driver = driver;

@@ -19,7 +19,7 @@ import java.net.URL;
 
 public class TestSearchFlight {
 
-        private AndroidDriver<MobileElement> driver;
+        private static AndroidDriver<MobileElement> driver;
         private SearchFlight searchFlight;
 
         @BeforeClass
@@ -35,6 +35,7 @@ public class TestSearchFlight {
 
             driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         }
+
 
         @BeforeMethod
         public void pageObject() {
@@ -54,7 +55,7 @@ public class TestSearchFlight {
 //            driver.quit();
 //        }
 
-    private static ExtentTest extentTest;
+    public static ExtentTest extentTest;
 
     @When("TCC.001.SearchTiketPesawat.User click menu tiket pesawat di dashboard")
     public void tcc_001_search_tiket_pesawat_user_click_menu_tiket_pesawat_di_dashboard() {
